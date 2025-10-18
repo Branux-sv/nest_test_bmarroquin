@@ -1,27 +1,4 @@
-export class SesSnsEvent {
-  records: SesSnsRecord[];
-}
-
-export class SesSnsRecord {
-  eventVersion: string;
-  ses: Ses;
-  eventSource: string;
-}
-
-export class Ses {
-  receipt: Receipt;
-  mail: Mail;
-}
-
-export class Mail {
-  timestamp: Date;
-  source: string;
-  messageId: string;
-  destination: string[];
-  headersTruncated: boolean;
-  headers: Header[];
-  commonHeaders: CommonHeaders;
-}
+import { Type } from 'class-transformer';
 
 export class CommonHeaders {
   returnPath: string;
@@ -38,19 +15,6 @@ export class Header {
   value: string;
 }
 
-export class Receipt {
-  timestamp: Date;
-  processingTimeMillis: number;
-  recipients: string[];
-  spamVerdict: Verdict;
-  virusVerdict: Verdict;
-  spfVerdict: Verdict;
-  dkimVerdict: Verdict;
-  dmarcVerdict: Verdict;
-  dmarcPolicy: string;
-  action: Action;
-}
-
 export class Action {
   type: string;
   topicArn: string;
@@ -58,4 +22,47 @@ export class Action {
 
 export class Verdict {
   status: string;
+}
+
+export class Receipt {
+  timestamp: Date;
+  processingTimeMillis: number;
+  recipients: string[];
+  @Type(() => Verdict)
+  spamVerdict: Verdict;
+  @Type(() => Verdict)
+  virusVerdict: Verdict;
+  @Type(() => Verdict)
+  spfVerdict: Verdict;
+  @Type(() => Verdict)
+  dkimVerdict: Verdict;
+  @Type(() => Verdict)
+  dmarcVerdict: Verdict;
+  dmarcPolicy: string;
+  action: Action;
+}
+export class Mail {
+  timestamp: string;
+  source: string;
+  messageId: string;
+  destination: string[];
+  headersTruncated: boolean;
+  headers: Header[];
+  commonHeaders: CommonHeaders;
+}
+
+export class Ses {
+  @Type(() => Receipt)
+  receipt: Receipt;
+  mail: Mail;
+}
+export class SesSnsRecord {
+  eventVersion: string;
+  @Type(() => Ses)
+  ses: Ses;
+  eventSource: string;
+}
+export class SesSnsEvent {
+  @Type(() => SesSnsRecord)
+  Records: SesSnsRecord[];
 }
