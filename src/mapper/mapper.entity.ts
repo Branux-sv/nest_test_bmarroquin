@@ -25,7 +25,7 @@ export class Verdict {
 }
 
 export class Receipt {
-  timestamp: Date;
+  timestamp: string;
   processingTimeMillis: number;
   recipients: string[];
   @Type(() => Verdict)
