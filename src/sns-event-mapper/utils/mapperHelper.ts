@@ -1,4 +1,4 @@
-import { Mail, Receipt } from '../mapper.entity';
+import { Mail, Receipt } from '../sns-event-mapper.entity';
 
 export const PASS_VALUE = 'PASS';
 export const MAX_PROCESSING_TIME = 1000;

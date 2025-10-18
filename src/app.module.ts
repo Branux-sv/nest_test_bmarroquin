@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { MapperModule } from './mapper/mapper.module';
+import { SNSEventMapperModule } from './sns-event-mapper/sns-event-mapper.module';
 @Module({
-  imports: [MapperModule],
+  imports: [SNSEventMapperModule],
 })
 export class AppModule {}

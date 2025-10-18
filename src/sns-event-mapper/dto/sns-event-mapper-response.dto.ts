@@ -7,9 +7,9 @@ import {
   MAX_PROCESSING_TIME,
   PASS_VALUE,
 } from '../utils/mapperHelper';
-import { SesSnsRecord } from '../mapper.entity';
+import { SesSnsRecord } from '../sns-event-mapper.entity';
 
-export class MapperResponseDto {
+export class SNSEventMapperResponseDto {
   @Expose()
   @Transform(({ obj }) =>
     (obj as SesSnsRecord)?.ses?.receipt?.spamVerdict?.status === PASS_VALUE
