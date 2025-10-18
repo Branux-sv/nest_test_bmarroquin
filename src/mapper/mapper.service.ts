@@ -10,7 +10,7 @@ export class MapperService {
     const mappedResponse = sesSnsEvent.Records.map((record) => {
       return plainToInstance(MapperResponseDto, record, {
         excludeExtraneousValues: true,
-      }) as MapperResponseDto;
+      });
     });
 
     return mappedResponse;
