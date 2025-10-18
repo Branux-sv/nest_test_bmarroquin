@@ -20,7 +20,7 @@ export class MapperResponseDto {
 
   @Expose()
   @Transform(({ obj }) =>
-    (obj as SesSnsRecord)?.ses?.receipt?.spamVerdict?.status === PASS_VALUE
+    (obj as SesSnsRecord)?.ses?.receipt?.virusVerdict?.status === PASS_VALUE
       ? true
       : false,
   )

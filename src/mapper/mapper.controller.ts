@@ -9,7 +9,6 @@ export class MapperController {
 
   @Post()
   getMappedResponse(@Body() sesSnsEvent: SesSnsEvent): MapperResponseDto[] {
-    console.log(typeof sesSnsEvent.Records[0].ses.mail.timestamp);
     return this.mapperService.getResponseMapping(sesSnsEvent);
   }
 }
