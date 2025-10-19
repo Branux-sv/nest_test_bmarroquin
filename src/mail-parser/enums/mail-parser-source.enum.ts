@@ -3,3 +3,9 @@ export enum SourceDownloadEmail {
   LocalFile = 'LocalFile',
   ExternalWebResource = 'ExternalWebResource',
 }
+
+export enum JsonSourceType {
+  Attachment = 'attachment',
+  DirectLink = 'directLink',
+  WebPageWithJsonLink = 'webPageWithJsonLink',
+}
