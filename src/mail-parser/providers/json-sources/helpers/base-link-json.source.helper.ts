@@ -31,7 +31,7 @@ export const extractLinksFromEmail = (parsedEmail: ParsedMail): string[] => {
     const matches = parsedEmail.text.match(urlRegex);
     if (matches) {
       matches.forEach((url) => {
-        const cleanUrl = url.replace(/[.,;)]+$/, '');
+        const cleanUrl = url.replace(/[.,;>)]+$/, '');
         if (isValidUrl(cleanUrl)) {
           links.add(cleanUrl);
         }
