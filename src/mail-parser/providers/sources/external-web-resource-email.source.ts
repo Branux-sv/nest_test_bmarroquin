@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { IEmailSource } from '../../../mail-parser/interfaces/email-source.interface';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
+import { DEFAULT_TIME_OUT_HTTP } from '../../../mail-parser/consts/mail-parser-source.const';
 
 @Injectable()
 export class ExternalWebResourceEmailSource implements IEmailSource {
@@ -12,7 +13,7 @@ export class ExternalWebResourceEmailSource implements IEmailSource {
       const response = await lastValueFrom(
         this.httpService.get(url, {
           responseType: 'arraybuffer',
-          timeout: 30000,
+          timeout: DEFAULT_TIME_OUT_HTTP,
         }),
       );
       return Buffer.from(response.data);
