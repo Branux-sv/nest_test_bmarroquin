@@ -23,6 +23,12 @@ export class MailParserService {
     const emailContent = await sourceGetEmail.getEmailContent(emailPathOrUrl);
     const parsedEmail = await simpleParser(emailContent);
 
+    //Try to find JSON as attachment
+    const attachmentResult = this.getJsonFromAttachment(parsedEmail);
+    if (attachmentResult) {
+      return { jsonData: attachmentResult };
+    }
+
     return { jsonData: { name: '123' } };
   }
 
@@ -39,5 +45,36 @@ export class MailParserService {
     return sourceDownloadEmail;
   }
 
+  private findJsonAttachment(parsedEmail: ParsedMail): Attachment | undefined {
+    if (!parsedEmail.attachments || parsedEmail.attachments.length === 0) {
+      return undefined;
+    }
 
+    return parsedEmail.attachments.find((attachment) => {
+      const isJsonFile = attachment.filename?.toLowerCase().endsWith('.json');
+      const isJsonContentType =
+        attachment.contentType?.includes('application/json');
+
+      return isJsonFile || isJsonContentType;
+    });
+  }
+
+  private getJsonFromAttachment(
+    parsedEmail: ParsedMail,
+  ): Record<string, unknown> | null {
+    const jsonAttachment = this.findJsonAttachment(parsedEmail);
+
+    if (!jsonAttachment) {
+      return null;
+    }
+
+    try {
+      const content = jsonAttachment.content.toString('utf-8');
+      const data = JSON.parse(content) as Record<string, unknown>;
+      return data;
+    } catch (error) {
+      console.error('Failed to parse attachment JSON:', error);
+      return null;
+    }
+  }
 }
