@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { SNSEventMapperService } from './sns-event-mapper.service';
 import { SNSEventMapperResponseDto } from './dto/sns-event-mapper-response.dto';
 import { SesSnsEvent } from './sns-event-mapper.entity';
@@ -8,6 +8,7 @@ export class SNSEventMapperController {
   constructor(private readonly snsEventMapperService: SNSEventMapperService) {}
 
   @Post()
+  @HttpCode(HttpStatus.OK)
   getSnsEventMappedResponse(
     @Body() sesSnsEvent: SesSnsEvent,
   ): SNSEventMapperResponseDto[] {
