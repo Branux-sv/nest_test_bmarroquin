@@ -13,7 +13,6 @@ export class DirectLinkJsonSource implements IJsonSource {
   async getJson(parsedEmail: ParsedMail): Promise<JsonAttachment | null> {
     const links = extractLinksFromEmail(parsedEmail);
     let jsonAttachment: JsonAttachment | null = null;
-    console.log('DEBUG: links:', links);
 
     //Try each link to see if it's a direct JSON
     for (const link of links) {
