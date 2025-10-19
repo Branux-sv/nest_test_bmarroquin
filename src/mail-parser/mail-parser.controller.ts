@@ -1,6 +1,7 @@
 import { BadRequestException, Controller, Get, Query } from '@nestjs/common';
 import { MailParserService } from './mail-parser.service';
 import { MailParserResponseDto } from './dto/mail-parser-response.dto';
+import { JsonAttachment } from './types/mail-parser.type';
 
 @Controller('/project2/mail-parser')
 export class MailParserController {
@@ -9,12 +10,15 @@ export class MailParserController {
   @Get()
   async getJsonFileFromEmail(
     @Query('emailPath') emailPathOrUrl: string,
-  ): Promise<MailParserResponseDto> {
+  ): Promise<JsonAttachment> {
     if (!emailPathOrUrl) {
       throw new BadRequestException(
         'The path or the URL of the email is required',
       );
     }
-    return this.mailParserService.getJsonFileFromEmail(emailPathOrUrl);
+    const response: MailParserResponseDto =
+      await this.mailParserService.getJsonFileFromEmail(emailPathOrUrl);
+
+    return response.jsonData;
   }
 }
