@@ -3,7 +3,7 @@ import { SNSEventMapperService } from './sns-event-mapper.service';
 import { SNSEventMapperResponseDto } from './dto/sns-event-mapper-response.dto';
 import { SesSnsEvent } from './sns-event-mapper.entity';
 
-@Controller('/project1/mapper')
+@Controller('sns-event-mapper')
 export class SNSEventMapperController {
   constructor(private readonly snsEventMapperService: SNSEventMapperService) {}
 

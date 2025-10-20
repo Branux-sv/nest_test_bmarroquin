@@ -3,7 +3,7 @@ import { MailParserService } from './mail-parser.service';
 import { MailParserResponseDto } from './dto/mail-parser-response.dto';
 import { JsonAttachment } from './types/mail-parser.type';
 
-@Controller('/project2/mail-parser')
+@Controller('/mail-parser')
 export class MailParserController {
   constructor(private readonly mailParserService: MailParserService) {}
 
