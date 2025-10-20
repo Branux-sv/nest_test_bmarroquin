@@ -1,10 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { IEmailSource } from '../../../mail-parser/interfaces/email-source.interface';
 import * as fs from 'fs';
 import * as path from 'path';
+import { AppLogger } from './../../../mail-parser/utils/mail-parser.logger';
 
 @Injectable()
 export class LocalFileEmailSource implements IEmailSource {
+  constructor(private readonly appLogger: AppLogger) {}
+
   async getEmailContent(filePath: string): Promise<Buffer> {
     try {
       const absolutePath = path.isAbsolute(filePath)
@@ -17,7 +20,8 @@ export class LocalFileEmailSource implements IEmailSource {
 
       return fs.promises.readFile(absolutePath);
     } catch (error) {
-      throw new Error(`Failed to read email file: ${error}`);
+      this.appLogger.getLogger().error('[getEmailContent] -> Error', error);
+      throw new InternalServerErrorException(`Failed to read email file`);
     }
   }
 }

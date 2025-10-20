@@ -1,12 +1,16 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { IEmailSource } from '../../../mail-parser/interfaces/email-source.interface';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 import { DEFAULT_TIME_OUT_HTTP } from '../../../mail-parser/consts/mail-parser-source.const';
+import { AppLogger } from './../../../mail-parser/utils/mail-parser.logger';
 
 @Injectable()
 export class ExternalWebResourceEmailSource implements IEmailSource {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly appLogger: AppLogger,
+  ) {}
 
   async getEmailContent(url: string): Promise<Buffer> {
     try {
@@ -18,7 +22,10 @@ export class ExternalWebResourceEmailSource implements IEmailSource {
       );
       return Buffer.from(response.data);
     } catch (error) {
-      throw new Error(`Failed to download email from URL: ${error}`);
+      this.appLogger.getLogger().error('[getEmailContent] -> Error', error);
+      throw new InternalServerErrorException(
+        `Failed to download email from URL`,
+      );
     }
   }
 }

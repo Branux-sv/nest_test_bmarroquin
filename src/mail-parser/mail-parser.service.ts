@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/axios';
-import { Inject, Injectable } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { MailParserResponseDto } from './dto/mail-parser-response.dto';
 import {
   JsonSourceType,
@@ -44,7 +44,9 @@ export class MailParserService {
     }
 
     if (!jsonAttachment) {
-      throw new Error('Could not extract JSON from any source in the email');
+      throw new BadRequestException(
+        'Could not extract JSON from any source in the email',
+      );
     }
 
     return { jsonData: jsonAttachment };

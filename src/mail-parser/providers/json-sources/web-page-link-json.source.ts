@@ -10,10 +10,14 @@ import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 import { DEFAULT_TIME_OUT_HTTP } from '../../../mail-parser/consts/mail-parser-source.const';
 import { getJsonFromDirectLink } from './helpers/download-json.source.helper';
+import { AppLogger } from '../../../mail-parser/utils/mail-parser.logger';
 
 @Injectable()
 export class WebPageWithLinkJsonSource implements IJsonSource {
-  constructor(private readonly httpService: HttpService) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly appLogger: AppLogger,
+  ) {}
 
   async getJson(parsedEmail: ParsedMail): Promise<JsonAttachment | null> {
     const links = extractLinksFromEmail(parsedEmail);
@@ -70,7 +74,7 @@ export class WebPageWithLinkJsonSource implements IJsonSource {
 
       return null;
     } catch (error) {
-      console.error('Failed to process webpage:', error);
+      this.appLogger.getLogger().warn('Failed to process webpage:', error);
       return null;
     }
   }

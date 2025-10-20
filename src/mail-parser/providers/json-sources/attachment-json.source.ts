@@ -2,9 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { IJsonSource } from '../../interfaces/json-source.interface';
 import { JsonAttachment } from '../../types/mail-parser.type';
 import { Attachment, ParsedMail } from 'mailparser';
+import { AppLogger } from '../../../mail-parser/utils/mail-parser.logger';
 
 @Injectable()
 export class AttachmentJsonSource implements IJsonSource {
+  constructor(private readonly appLogger: AppLogger) {}
+
   getJson(parsedEmail: ParsedMail): JsonAttachment | null {
     const jsonAttachment = this.findJsonAttachment(parsedEmail);
 
@@ -17,7 +20,9 @@ export class AttachmentJsonSource implements IJsonSource {
       const data = JSON.parse(content) as JsonAttachment;
       return data;
     } catch (error) {
-      console.error('Failed to parse attachment JSON:', error);
+      this.appLogger
+        .getLogger()
+        .warn('Failed to parse attachment JSON:', error);
       return null;
     }
   }
