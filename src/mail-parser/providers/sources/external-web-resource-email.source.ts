@@ -12,6 +12,9 @@ export class ExternalWebResourceEmailSource implements IEmailSource {
     private readonly appLogger: AppLogger,
   ) {}
 
+  /**
+   * Downloads email from URL
+   */
   async getEmailContent(url: string): Promise<Buffer> {
     try {
       const response = await lastValueFrom(

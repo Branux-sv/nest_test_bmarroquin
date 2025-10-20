@@ -27,6 +27,9 @@ export class AttachmentJsonSource implements IJsonSource {
     }
   }
 
+  /**
+   * Finds JSON attachment in parsed email
+   */
   private findJsonAttachment(parsedEmail: ParsedMail): Attachment | undefined {
     if (!parsedEmail.attachments || parsedEmail.attachments.length === 0) {
       return undefined;

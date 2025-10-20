@@ -8,6 +8,9 @@ import { AppLogger } from './../../../mail-parser/utils/mail-parser.logger';
 export class LocalFileEmailSource implements IEmailSource {
   constructor(private readonly appLogger: AppLogger) {}
 
+  /**
+   * Reads email from local file system
+   */
   async getEmailContent(filePath: string): Promise<Buffer> {
     try {
       const absolutePath = path.isAbsolute(filePath)

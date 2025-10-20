@@ -12,6 +12,9 @@ export const isValidUrl = (urlString: string): boolean => {
   }
 };
 
+/**
+ * Extracts all links from email body (text and HTML)
+ */
 export const extractLinksFromEmail = (parsedEmail: ParsedMail): string[] => {
   const links: Set<string> = new Set();
 
@@ -31,6 +34,7 @@ export const extractLinksFromEmail = (parsedEmail: ParsedMail): string[] => {
     const matches = parsedEmail.text.match(urlRegex);
     if (matches) {
       matches.forEach((url) => {
+        //Remove common trailing and some special characters
         const cleanUrl = url.replace(/[.,;>)]+$/, '');
         if (isValidUrl(cleanUrl)) {
           links.add(cleanUrl);

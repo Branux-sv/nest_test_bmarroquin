@@ -3,6 +3,9 @@ import { DEFAULT_TIME_OUT_HTTP } from '../../../../mail-parser/consts/mail-parse
 import { JsonAttachment } from '../../../../mail-parser/types/mail-parser.type';
 import { HttpService } from '@nestjs/axios';
 
+/**
+ * Downloads a JSON from an URL
+ */
 export const getJsonFromDirectLink = async (
   httpService: HttpService,
   url: string,
