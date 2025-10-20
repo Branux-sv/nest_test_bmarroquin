@@ -9,6 +9,7 @@ import { AttachmentJsonSource } from './providers/json-sources/attachment-json.s
 import { DirectLinkJsonSource } from './providers/json-sources/direct-link-json.source';
 import { WebPageWithLinkJsonSource } from './providers/json-sources/web-page-link-json.source';
 import { JsonSourceFactory } from './providers/json-source.factory';
+import { AppLogger } from './utils/mail-parser.logger';
 
 @Module({
   imports: [HttpModule],
@@ -28,6 +29,7 @@ import { JsonSourceFactory } from './providers/json-source.factory';
       provide: 'IJsonSourceFactory',
       useClass: JsonSourceFactory,
     },
+    AppLogger,
   ],
 })
 export class MailParserModule {}
