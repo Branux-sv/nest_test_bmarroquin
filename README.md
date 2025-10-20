@@ -1,98 +1,392 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# NestJS Test Project - Brayan Marroquín
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)](https://nestjs.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+This is my test project developed with [NestJS](https://nestjs.com/), a progressive Node.js framework for building efficient and scalable server-side applications.
 
-## Description
+## 📋 Table of Contents
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [NestJS Test Project - Brayan Marroquín](#nestjs-test-project---brayan-marroquín)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [📖 Description](#-description)
+  - [✨ Features](#-features)
+  - [🔧 Prerequisites](#-prerequisites)
+  - [📦 Installation](#-installation)
+  - [⚙️ Configuration (optional)](#️-configuration-optional)
+  - [🚀 Running the Application](#-running-the-application)
+    - [Development Mode](#development-mode)
+    - [Production Mode](#production-mode)
+    - [Other useful commands](#other-useful-commands)
+  - [🌐 API Endpoints](#-api-endpoints)
+    - [Base URL](#base-url)
+    - [SNS Event Mapper](#sns-event-mapper)
+      - [POST `/sns-event-mapper`](#post-sns-event-mapper)
+    - [Mail Parser](#mail-parser)
+      - [GET `/mail-parser`](#get-mail-parser)
+    - [HTTP Status Codes](#http-status-codes)
+    - [Error Response Example](#error-response-example)
+  - [🧪 Testing](#-testing)
+    - [Unit Tests](#unit-tests)
+    - [Test Coverage](#test-coverage)
+  - [📁 Project Structure](#-project-structure)
+  - [🛠️ Technologies Used](#️-technologies-used)
+  - [📦 Main Dependencies](#-main-dependencies)
+  - [📝 Available Scripts](#-available-scripts)
+  - [👨‍💻 Author](#-author)
+  - [📄 License](#-license)
+  - [📚 Additional Resources](#-additional-resources)
 
-## Project setup
+## 📖 Description
+
+This is a technical test project that demonstrates NestJS capabilities for creating robust and scalable RESTful APIs. The project implements development best practices, including modular architecture, dependency injection, and testing.
+
+This project involves both exercises.
+
+## ✨ Features
+
+- 🏗️ **Modular Architecture**: Organized structure with reusable modules
+- 🧪 **Testing**: Configured unit and e2e tests
+- 🔄 **Restful API**: Post and Get operations
+- ⚡ **Fast Development**: Hot-reload enabled in development mode
+
+## 🔧 Prerequisites
+
+Before you begin, make sure you have installed:
+
+- [Node.js](https://nodejs.org/) (version 16.x or higher)
+- [npm](https://www.npmjs.com/) (version 8.x or higher) or [yarn](https://yarnpkg.com/)
+- [Git](https://git-scm.com/)
+
+## 📦 Installation
+
+1. **Clone the repository**
 
 ```bash
-$ npm install
+git clone https://github.com/Branux-sv/nest_test_bmarroquin.git
+cd nest_test_bmarroquin
 ```
 
-## Compile and run the project
+2. **Install dependencies**
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
 ```
 
-## Run tests
+## ⚙️ Configuration (optional)
+
+1. **Environment variables**
+
+Create a `.env` file in the project root:
+
+```env
+# Application
+PORT=3000
+NODE_ENV=development
+```
+
+## 🚀 Running the Application
+
+### Development Mode
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start:dev
 ```
 
-## Deployment
+The application will be available at `http://localhost:3000`
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Production Mode
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+# Build the project
+npm run build
+
+# Run in production
+npm run start:prod
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Other useful commands
 
-## Resources
+```bash
+# Development without watch mode
+npm run start
 
-Check out a few resources that may come in handy when working with NestJS:
+# Debug mode
+npm run start:debug
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## 🌐 API Endpoints
 
-## Support
+### Base URL
+```
+http://localhost:3000/api/v1
+```
+### SNS Event Mapper
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### POST `/sns-event-mapper`
+Gets a mapped JSON as response based on a SNS event as input
 
-## Stay in touch
+**Request Body:**
+```json
+{
+  "Records": [
+    {
+      "eventVersion": "1.0",
+      "ses": {
+        "receipt": {
+          "timestamp": "2015-09-11T20:32:33.936Z",
+          "processingTimeMillis": 1000,
+          "recipients": [
+            "recipient@example.com"
+          ],
+          "spamVerdict": {
+            "status": "PASS"
+          },
+          "virusVerdict": {
+            "status": "PASS"
+          },
+          "spfVerdict": {
+            "status": "PASS"
+          },
+          "dkimVerdict": {
+            "status": "PASS"
+          },
+          "dmarcVerdict": {
+            "status": "PASS"
+          },
+          "dmarcPolicy": "reject",
+          "action": {
+            "type": "SNS",
+            "topicArn": "arn:aws:sns:us-east-1:012345678912:example-topic"
+          }
+        },
+        "mail": {
+          "timestamp": "2015-09-11T20:32:33.936Z",
+          "source": "61967230-7A45-4A9D-BEC9-87CBCF2211C9@example.com",
+          "messageId": "d6iitobk75ur44p8kdnnp7g2n800",
+          "destination": [
+            "recipient@example.com"
+          ],
+          "headersTruncated": false,
+          "headers": [
+            {
+              "name": "Return-Path",
+              "value": "<0000014fbe1c09cf-7cb9f704-7531-4e53-89a1-5fa9744f5eb6-000000@amazonses.com>"
+            },
+            {
+              "name": "Received",
+              "value": "from a9-183.smtp-out.amazonses.com (a9-183.smtp-out.amazonses.com [54.240.9.183]) by inbound-smtp.us-east-1.amazonaws.com with SMTP id d6iitobk75ur44p8kdnnp7g2n800 for recipient@example.com; Fri, 11 Sep 2015 20:32:33 +0000 (UTC)"
+            },
+            {
+              "name": "DKIM-Signature",
+              "value": "v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple; s=ug7nbtf4gccmlpwj322ax3p6ow6yfsug; d=amazonses.com; t=1442003552; h=From:To:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Date:Message-ID:Feedback-ID; bh=DWr3IOmYWoXCA9ARqGC/UaODfghffiwFNRIb2Mckyt4=; b=p4ukUDSFqhqiub+zPR0DW1kp7oJZakrzupr6LBe6sUuvqpBkig56UzUwc29rFbJF hlX3Ov7DeYVNoN38stqwsF8ivcajXpQsXRC1cW9z8x875J041rClAjV7EGbLmudVpPX 4hHst1XPyX5wmgdHIhmUuh8oZKpVqGi6bHGzzf7g="
+            },
+            {
+              "name": "From",
+              "value": "sender@example.com"
+            },
+            {
+              "name": "To",
+              "value": "recipient@example.com"
+            },
+            {
+              "name": "Subject",
+              "value": "Example subject"
+            },
+            {
+              "name": "MIME-Version",
+              "value": "1.0"
+            },
+            {
+              "name": "Content-Type",
+              "value": "text/plain; charset=UTF-8"
+            },
+            {
+              "name": "Content-Transfer-Encoding",
+              "value": "7bit"
+            },
+            {
+              "name": "Date",
+              "value": "Fri, 11 Sep 2015 20:32:32 +0000"
+            },
+            {
+              "name": "Message-ID",
+              "value": "<61967230-7A45-4A9D-BEC9-87CBCF2211C9@example.com>"
+            },
+            {
+              "name": "X-SES-Outgoing",
+              "value": "2015.09.11-54.240.9.183"
+            },
+            {
+              "name": "Feedback-ID",
+              "value": "1.us-east-1.Krv2FKpFdWV+KUYw3Qd6wcpPJ4Sv/pOPpEPSHn2u2o4=:AmazonSES"
+            }
+          ],
+          "commonHeaders": {
+            "returnPath": "0000014fbe1c09cf-7cb9f704-7531-4e53-89a1-5fa9744f5eb6-000000@amazonses.com",
+            "from": [
+              "sender@example.com"
+            ],
+            "date": "Fri, 11 Sep 2015 20:32:32 +0000",
+            "to": [
+              "recipient@example.com"
+            ],
+            "cc": [
+              "cc@example.com",
+              "cc2@example.com"
+            ],
+            "messageId": "<61967230-7A45-4A9D-BEC9-87CBCF2211C9@example.com>",
+            "subject": "Example subject"
+          }
+        }
+      },
+      "eventSource": "aws:ses"
+    }
+  ]
+}
+```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Response:** `200 OK`
+```json
+[
+  {
+    "spam": true,
+    "virus": true,
+    "dns": true,
+    "mes": "September",
+    "retrasado": false,
+    "emisor": "61967230-7A45-4A9D-BEC9-87CBCF2211C9",
+    "receptor": [
+      "recipient"
+    ]
+  }
+]
+```
 
-## License
+### Mail Parser
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+#### GET `/mail-parser`
+Gets a JSON file inside an email (.eml) file, returns the content of the JSON in any of the following cases:
+- As a file attachment.
+- Inside the body of the email as a link.
+- Inside the body of the email as a link that leads to a webpage where there is a link that leads to the actual JSON.
+
+**Query Parameters:**
+- `emailPath` (required): The URL or path of an email file
+
+**Response:** `200 OK`
+```json
+{
+  "firstName": "Joe",
+  "lastName": "Jackson",
+  "gender": "male",
+  "age": 28,
+  "address": {
+    "streetAddress": "101",
+    "city": "San Diego",
+    "state": "CA"
+  },
+  "phoneNumbers": [
+    {
+      "type": "home",
+      "number": "7349282382"
+    }
+  ]
+}
+```
+Note: the shape of the JSON can change based on the email info
+
+### HTTP Status Codes
+
+- `200 OK` - Successful request
+- `400 Bad Request` - Invalid input data
+- `404 Not Found` - Resource not found
+- `500 Internal Server Error` - Server error
+
+### Error Response Example
+
+```json
+{
+  "message": "Could not extract JSON from any source in the email",
+  "error": "Bad Request",
+  "statusCode": 400
+}
+```
+
+## 🧪 Testing
+
+### Unit Tests
+
+```bash
+npm run test
+```
+
+### Test Coverage
+
+```bash
+npm run test:cov
+```
+
+Coverage reports will be generated in the `coverage/` folder.
+
+## 📁 Project Structure
+
+![alt text](image.png)
+
+## 🛠️ Technologies Used
+
+- **Framework**: [NestJS](https://nestjs.com/) v10.x
+- **Lenguaje**: [TypeScript](https://www.typescriptlang.org/) v5.x
+- **Runtime**: [Node.js](https://nodejs.org/) v16+
+- **Mapper/transformer**: [class-transformer](https://github.com/typestack/class-transformer)
+- **Mail Parser**: [mailparser](https://github.com/nodemailer/mailparser)
+- **Testing**: [Jest](https://jestjs.io/)
+
+## 📦 Main Dependencies
+
+```json
+{
+  "@nestjs/axios": "^4.0.1",
+  "@nestjs/common": "^11.0.1",
+  "@nestjs/core": "^11.0.1",
+  "@nestjs/platform-express": "^11.0.1",
+  "axios": "^1.12.2",
+  "cheerio": "^1.1.2",
+  "class-transformer": "^0.5.1",
+  "mailparser": "^3.7.5",
+  "reflect-metadata": "^0.2.2",
+  "rxjs": "^7.8.1"
+}
+```
+
+## 📝 Available Scripts
+
+- `npm run start` - Starts the application in development mode
+- `npm run start:dev` - Starts with hot-reload enabled
+- `npm run start:debug` - Starts in debug mode
+- `npm run start:prod` - Starts in production mode
+- `npm run build` - Builds the project
+- `npm run format` - Formats code with Prettier
+- `npm run lint` - Runs the linter
+- `npm run test` - Runs unit tests
+- `npm run test:watch` - Runs tests in watch mode
+- `npm run test:cov` - Generates coverage report
+- `npm run test:e2e` - Runs e2e tests
+
+## 👨‍💻 Author
+
+**Brayan Marroquín**
+- GitHub: [@Branux-sv](https://github.com/Branux-sv)
+
+## 📄 License
+
+This project is not under License.
+
+## 📚 Additional Resources
+
+- [Official NestJS Documentation](https://docs.nestjs.com)
+- [NestJS Courses](https://courses.nestjs.com/)
+- [NestJS DevTools](https://devtools.nestjs.com)
+  
+Developed with ❤️ using NestJS
